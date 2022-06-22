@@ -13,14 +13,12 @@ function Edit({ row, getAllData }) {
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
-  const [values, setValues] = useState([
-    {
-      name: `${row.name}`,
-      address: `${row.address}`,
-      time_open: `${row.time_open}`,
-      time_close: `${row.time_close}`,
-    },
-  ]);
+  const [values, setValues] = useState({
+    name: `${row.name}`,
+    address: `${row.address}`,
+    time_open: `${row.time_open}`,
+    time_close: `${row.time_close}`,
+  });
   const onChange = (e) => {
     setValues({ ...values, [e.target.name]: e.target.value });
   };
@@ -41,6 +39,15 @@ function Edit({ row, getAllData }) {
     }
   };
 
+  const deleteLocation = (id) => {
+    Api()
+      .delete(`location/${id}`)
+      .then(() => {
+        handleClose();
+        getAllData();
+      })
+      .catch((err) => alert(err));
+  };
   return (
     <div>
       <TableItem row={row} handleOpen={handleOpen} />
@@ -97,6 +104,7 @@ function Edit({ row, getAllData }) {
                 text="Delete"
                 color="error"
                 startIcon={<DeleteOutlinedIcon />}
+                onClick={() => deleteLocation(row.id)}
               />
               <Button
                 text="Edit"
