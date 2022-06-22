@@ -1,7 +1,7 @@
 import { TextField } from '@mui/material'
 import React from 'react'
  
-const index = ({name,label,placeholder,onChange,value}) => {
+const index = ({name,label,placeholder,onChange,value,error}) => {
   return (
     <TextField
     required
@@ -15,6 +15,8 @@ const index = ({name,label,placeholder,onChange,value}) => {
     variant="outlined"
     onChange={onChange}
     defaultValue={value}
+    error={error}
+
   />
   )
 }
