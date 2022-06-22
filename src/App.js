@@ -28,6 +28,13 @@ const Item = styled(Paper)(({ theme }) => ({
 
 
 function App() {
+
+ 
+
+
+
+
+
   const [data,setData] = useState([])
   const getAllData = () => {
     Api().get('/location')
@@ -59,7 +66,7 @@ function App() {
               <Modal getAllData={getAllData}/>
             </Box>
           </Box>
-          <TableComp  data={data}/>
+          <TableComp  getAllData={getAllData} data={data}/>
         </Grid>
       </Grid>
     </>

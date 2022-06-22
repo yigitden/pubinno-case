@@ -1,4 +1,4 @@
-import * as React from "react";
+import { useState } from "react"; 
 import { Box, Typography, Modal } from "@mui/material";
 import { ModalStyle } from "./Modal.style";
 import Button from "../Button";
@@ -8,10 +8,10 @@ import AddIcon from "@mui/icons-material/Add";
 import Api from "../../service/Api";
  
 export default function BasicModal({getAllData}) {
-  const [open, setOpen] = React.useState(false);
+  const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
-  const [values, setValues] = React.useState([]);
+  const [values, setValues] = useState([]);
   const onChange = (e) => {
     setValues({ ...values, [e.target.name]: e.target.value });
   };
@@ -33,7 +33,7 @@ export default function BasicModal({getAllData}) {
   };
   return (
     <div>
-      <Button onClick={handleOpen} text="New" startIcon={<AddIcon />} />
+      <Button onClick={handleOpen} text="New" color="error" startIcon={<AddIcon />} />
 
       <Modal
         open={open}
@@ -81,7 +81,7 @@ export default function BasicModal({getAllData}) {
               />
             </Box>
             <Box sx={ModalStyle.button}>
-              <Button text="Save" onClick={postNewLocation} />
+              <Button text="Save" onClick={postNewLocation} color="error"/>
             </Box>
           </Box>
         </Box>
