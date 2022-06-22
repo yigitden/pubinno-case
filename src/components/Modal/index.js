@@ -21,7 +21,7 @@ export default function BasicModal({getAllData}) {
   const [timeCloseError,setTimeCloseError]=useState(false)
 
   const postNewLocation = () => {
-    
+
     setNameError(false)
     setAddressError(false)
     setTimeOpenError(false)
@@ -33,7 +33,7 @@ export default function BasicModal({getAllData}) {
       setAddressError(true)
     }else if(values.time_open == undefined){
       setTimeOpenError(true)
-    }else if(values.time_close === undefined){
+    }else if(values.time_close == undefined){
       setTimeCloseError(true)
     }else{
       Api().post('location',values)
