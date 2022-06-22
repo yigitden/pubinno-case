@@ -10,8 +10,8 @@ const Pagination = ({
   return (
     <TablePagination
       component="div"
-      showFirstButton="true"
-      showLastButton="true"
+      showFirstButton={true}
+      showLastButton={true}
       count={100}
       page={page}
       onPageChange={handleChangePage}
