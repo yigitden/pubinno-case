@@ -15,12 +15,26 @@ export default function BasicModal({getAllData}) {
   const onChange = (e) => {
     setValues({ ...values, [e.target.name]: e.target.value });
   };
+  const [nameError,setNameError]=useState(false)
+  const [addressError,setAddressError]=useState(false)
+  const [timeOpenError,setTimeOpenError]=useState(false)
+  const [timeCloseError,setTimeCloseError]=useState(false)
 
   const postNewLocation = () => {
-    if(values.name === undefined){
-      alert('You have to fill the name field')
-    }else if(values.address === undefined){
-      alert('You have to fill the address field')
+    
+    setNameError(false)
+    setAddressError(false)
+    setTimeOpenError(false)
+    setTimeCloseError(false)
+
+    if(values.name == undefined){
+      setNameError(true)
+    }else if(values.address == undefined){
+      setAddressError(true)
+    }else if(values.time_open == undefined){
+      setTimeOpenError(true)
+    }else if(values.time_close === undefined){
+      setTimeCloseError(true)
     }else{
       Api().post('location',values)
            .then(()=>{
@@ -60,12 +74,14 @@ export default function BasicModal({getAllData}) {
               label="Name"
               placeholder="Name"
               onChange={onChange}
+              error={nameError}
             />
             <Input
               name="address"
               label="Address"
               placeholder="Address"
               onChange={onChange}
+              error={addressError}
             />
 
             <Box sx={ModalStyle.time_picker}>
@@ -73,11 +89,13 @@ export default function BasicModal({getAllData}) {
                 label="Opening Time"
                 name="time_open"
                 onChange={onChange}
+                error={timeOpenError}
               />
               <TimePicker
                 label="Closing Time"
                 name="time_close"
                 onChange={onChange}
+                error={timeCloseError}
               />
             </Box>
             <Box sx={ModalStyle.button}>
