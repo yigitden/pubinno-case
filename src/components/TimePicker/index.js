@@ -8,7 +8,6 @@ const index = ({name,label,onChange}) => {
     label={label}
     type="time"
     size="small"
-    defaultValue="07:30"
     onChange={onChange}
     InputLabelProps={{
       shrink: true,
