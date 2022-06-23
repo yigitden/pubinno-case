@@ -1,7 +1,7 @@
 import React from "react";
 import TablePagination from "@mui/material/TablePagination";
 
-const Pagination = ({
+const Pagination = ({ 
   rowsPerPage,
   handleChangePage,
   handleChangeRowsPerPage,
@@ -12,7 +12,7 @@ const Pagination = ({
       component="div"
       showFirstButton={true}
       showLastButton={true}
-      count={100}
+      count={-1}
       page={page}
       onPageChange={handleChangePage}
       rowsPerPage={rowsPerPage}

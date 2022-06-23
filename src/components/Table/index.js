@@ -49,7 +49,7 @@ const TableComp = ({ data, getAllData, query }) => {
           ))}
         </Table>
       </TableContainer>
-      <Pagination
+      <Pagination 
         handleChangePage={handleChangePage}
         handleChangeRowsPerPage={handleChangeRowsPerPage}
         page={page}
