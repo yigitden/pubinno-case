@@ -29,11 +29,14 @@ export default function BasicModal({getAllData}) {
 
     if(values.name == undefined){
       setNameError(true)
-    }else if(values.address == undefined){
+    }
+    if(values.address == undefined){
       setAddressError(true)
-    }else if(values.time_open == undefined){
+    }
+    if(values.time_open == undefined){
       setTimeOpenError(true)
-    }else if(values.time_close == undefined){
+    }
+    if(values.time_close == undefined){
       setTimeCloseError(true)
     }else{
       Api().post('location',values)
