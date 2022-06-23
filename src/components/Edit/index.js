@@ -8,11 +8,16 @@ import DeleteOutlinedIcon from "@mui/icons-material/DeleteOutlined";
 import TableItem from "../Table/TableItem";
 import EditIcon from "@mui/icons-material/Edit";
 import { useState } from "react";
+import GetAlert from "../Alert/Alert";
 
 function Edit({ row, getAllData }) {
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
+  const [nameError, setNameError] = useState(false);
+  const [addressError, setAddressError] = useState(false);
+  const [alert, setAlert] = useState({ isOpen: false, message: "", type: "" });
+
   const [values, setValues] = useState({
     name: `${row.name}`,
     address: `${row.address}`,
@@ -24,19 +29,28 @@ function Edit({ row, getAllData }) {
   };
 
   const editLocation = (id) => {
-    if (values.name === undefined) {
-      alert("You have to fill the name field");
-    } else if (values.address === undefined) {
-      alert("You have to fill the address field");
+    setNameError(false);
+    setAddressError(false);
+    if (values.name === "") {
+      setNameError(true);
+    }
+    if (values.address === "") {
+      setAddressError(true);
     } else {
       Api()
         .put(`location/${id}`, values)
         .then(() => {
           handleClose();
           getAllData();
+          setAlert({
+            isOpen: true,
+            message: "Editing successful",
+            type: "success",
+          });
         })
         .catch((err) => alert(err));
     }
+    console.log(values.name);
   };
 
   const deleteLocation = (id) => {
@@ -45,11 +59,16 @@ function Edit({ row, getAllData }) {
       .then(() => {
         handleClose();
         getAllData();
+        setAlert({
+          isOpen: true,
+          message: "Deletion successful",
+          type: "success",
+        });
       })
       .catch((err) => alert(err));
   };
   return (
-    <div>
+    <>
       <TableItem row={row} handleOpen={handleOpen} />
       <Modal
         open={open}
@@ -76,13 +95,14 @@ function Edit({ row, getAllData }) {
               label="Name"
               value={row.name}
               onChange={onChange}
+              error={nameError}
             />
             <Input
               name="address"
               label="Address"
-              placeholder="Address"
               value={row.address}
               onChange={onChange}
+              error={addressError}
             />
 
             <Box sx={EditStyle.time_picker}>
@@ -116,7 +136,8 @@ function Edit({ row, getAllData }) {
           </Box>
         </Box>
       </Modal>
-    </div>
+      <GetAlert alert={alert} setAlert={setAlert} />
+    </>
   );
 }
 

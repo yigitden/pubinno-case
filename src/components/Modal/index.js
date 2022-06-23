@@ -6,7 +6,7 @@ import TimePicker from "../TimePicker";
 import Input from "../Input";
 import AddIcon from "@mui/icons-material/Add";
 import Api from "../../service/Api";
- 
+import GetAlert from "../Alert/Alert";
 export default function BasicModal({getAllData}) {
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
@@ -19,6 +19,7 @@ export default function BasicModal({getAllData}) {
   const [addressError,setAddressError]=useState(false)
   const [timeOpenError,setTimeOpenError]=useState(false)
   const [timeCloseError,setTimeCloseError]=useState(false)
+  const [alert,setAlert] = useState({isOpen:false, message:'', type:''})
 
   const postNewLocation = () => {
 
@@ -27,25 +28,27 @@ export default function BasicModal({getAllData}) {
     setTimeOpenError(false)
     setTimeCloseError(false)
 
-    if(values.name == undefined){
+    if(values.name === undefined || ''){
       setNameError(true)
-    }
-    if(values.address == undefined){
+    }else if(values.address === undefined || ''){
       setAddressError(true)
-    }
-    if(values.time_open == undefined){
+    }else if(values.time_open === undefined || ''){
       setTimeOpenError(true)
-    }
-    if(values.time_close == undefined){
+    }else if(values.time_close === undefined || ''){
       setTimeCloseError(true)
     }else{
       Api().post('location',values)
            .then(()=>{
             handleClose();
             getAllData();
+            setValues([])
+            setAlert({isOpen:true,message:'Location added successful',type:'success'})
+
           })
            .catch((err)=>alert(err))
     }
+    console.log(values)
+    
     
   };
   return (
@@ -107,6 +110,8 @@ export default function BasicModal({getAllData}) {
           </Box>
         </Box>
       </Modal>
+      <GetAlert alert={alert} setAlert={setAlert}/>
+
     </div>
   );
 }

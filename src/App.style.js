@@ -9,7 +9,6 @@ export const AppStyle = ({
     right_side:{
         display:'flex',
         alignItems:'center',
-        justifyContent:'space-between',
-        width:'30%'
+        
     }
 })

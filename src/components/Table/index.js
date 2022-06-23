@@ -10,10 +10,9 @@ import {
 import { useState } from "react";
 import Pagination from "../Pagination";
 import Edit from "../Edit";
-import TableItem from '../Table/TableItem'
+import { TableStyle } from "./Table.style";
 
-const TableComp = ({ data,getAllData }) => {
- 
+const TableComp = ({ data, getAllData, query }) => {
   const [page, setPage] = useState(0);
   const [rowsPerPage, setRowsPerPage] = useState(10);
 
@@ -28,26 +27,26 @@ const TableComp = ({ data,getAllData }) => {
   const dataForPagination = () => {
     return data.slice(page * rowsPerPage, (page + 1) * rowsPerPage);
   };
-
   return (
     <>
-      <TableContainer sx={{ maxHeight: 440 }} component={Paper}>
-        <Table sx={{ minWidth: 650 }} stickyHeader aria-label="sticky table">
+      <TableContainer sx={TableStyle.container} component={Paper}>
+        <Table
+          sx={TableStyle.table_header}
+          stickyHeader
+          aria-label="sticky table"
+        >
           <TableHead>
             <TableRow>
-              <TableCell>NAME</TableCell>
-              <TableCell >ADDRESS</TableCell>
+              <TableCell sx={TableStyle.table_cell}>NAME</TableCell>
+              <TableCell sx={TableStyle.table_cell}>ADDRESS</TableCell>
             </TableRow>
           </TableHead>
-          
-            {dataForPagination().map((row) => (
-                 <TableBody>
-                  <Edit row={row} getAllData={getAllData}/>
-                </TableBody>
-               
-           
-            ))}
-           
+
+          {dataForPagination().map((row) => (
+            <TableBody>
+              <Edit row={row} getAllData={getAllData} />
+            </TableBody>
+          ))}
         </Table>
       </TableContainer>
       <Pagination

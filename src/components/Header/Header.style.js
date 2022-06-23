@@ -6,7 +6,12 @@ export const HeaderStyle={
         height:'70px',
         display: "flex",
         alignItems: "center",
-        flexFlow:'row-wrap' 
+        flexFlow:'row-wrap',
+        justifyContent:'space-between'
+    },
+    menu:{
+        display: "flex",
+        alignItems: "center",
     }
 
 }
