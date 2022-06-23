@@ -47,12 +47,12 @@ export default function BasicModal({getAllData}) {
           })
            .catch((err)=>alert(err))
     }
-    console.log(values)
+  
     
     
   };
   return (
-    <div>
+    <>
       <Button onClick={handleOpen} text="New" color="error" startIcon={<AddIcon />} />
 
       <Modal
@@ -111,7 +111,7 @@ export default function BasicModal({getAllData}) {
         </Box>
       </Modal>
       <GetAlert alert={alert} setAlert={setAlert}/>
-
-    </div>
+      </>
+     
   );
 }

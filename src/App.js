@@ -26,20 +26,12 @@ function App() {
       .then((response) => setData(response.data))
       .catch((err) => alert(err));
   };
-  const [query, setQuery] = useState("");
+  const [query, setQuery] = useState('');
+
   const handleChange = (event) => {
     setQuery(event.target.value);
-    const newFilterSearchData = data.filter((value) => {
-      value.name.toLowerCase().includes(query.toLowerCase());
-    });
-
-    if (query == "") {
-      getAllData();
-    } else {
-      setData(newFilterSearchData);
-    }
   };
-
+  
   const matches = useMediaQuery("(max-width:900px)"); // sidebar for mobile
 
   useEffect(() => {
@@ -71,7 +63,7 @@ function App() {
               <Modal getAllData={getAllData} />
             </Box>
           </Box>
-          <TableComp getAllData={getAllData} data={data} query={query} />
+          <TableComp getAllData={getAllData} data={data} query={query}  />
         </Grid>
       </Grid>
     </>

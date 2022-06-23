@@ -31,10 +31,10 @@ function Edit({ row, getAllData }) {
   const editLocation = (id) => {
     setNameError(false);
     setAddressError(false);
-    if (values.name === "") {
+    if (values.name === '') {
       setNameError(true);
     }
-    if (values.address === "") {
+    if (values.address === '') {
       setAddressError(true);
     } else {
       Api()

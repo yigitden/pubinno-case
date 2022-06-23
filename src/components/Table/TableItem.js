@@ -1,5 +1,6 @@
-import { TableCell, TableRow,TableBody } from '@mui/material'
+import { TableCell, TableRow} from '@mui/material'
 import React from 'react'
+import { TableStyle } from './Table.style'
 
 const TableItem = ({row,handleOpen}) => {
   return (
@@ -7,10 +8,7 @@ const TableItem = ({row,handleOpen}) => {
     <TableRow
     onClick={handleOpen}
     key={row.id}
-    sx={{
-      "&:last-child td, &:last-child th": { border: 0 },
-      cursor: "pointer",
-    }}
+    sx={TableStyle.table_item}
   >
     <TableCell component="th" scope="row">
       {row.name}

@@ -25,7 +25,15 @@ const TableComp = ({ data, getAllData, query }) => {
     setPage(0);
   };
   const dataForPagination = () => {
-    return data.slice(page * rowsPerPage, (page + 1) * rowsPerPage);
+    if (query === "") {
+      return data.slice(page * rowsPerPage, (page + 1) * rowsPerPage);
+    } else {
+      return data
+        .filter((value) => {
+          return value.name.toLowerCase().includes(query.toLowerCase());
+        })
+        .slice(page * rowsPerPage, (page + 1) * rowsPerPage);
+    }
   };
   return (
     <>
@@ -42,14 +50,15 @@ const TableComp = ({ data, getAllData, query }) => {
             </TableRow>
           </TableHead>
 
-          {dataForPagination().map((row) => (
-            <TableBody>
-              <Edit row={row} getAllData={getAllData} />
-            </TableBody>
-          ))}
+          {dataForPagination() &&
+            dataForPagination().map((row) => (
+              <TableBody>
+                <Edit row={row} getAllData={getAllData} />
+              </TableBody>
+            ))}
         </Table>
       </TableContainer>
-      <Pagination 
+      <Pagination
         handleChangePage={handleChangePage}
         handleChangeRowsPerPage={handleChangeRowsPerPage}
         page={page}
