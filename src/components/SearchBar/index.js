@@ -2,13 +2,14 @@ import { TextField } from '@mui/material'
 import React from 'react'
 import SearchIcon from '@mui/icons-material/Search';
 import InputAdornment from '@mui/material/InputAdornment';
+import { SearchBarStyle } from './SearchBar.style';
 
-const index = () => {
+const index = ({handleChange}) => {
   return (
     <TextField
+    sx={SearchBarStyle.search}
     id="outlined-textarea" 
     placeholder="Search..."
-    multiline
         InputProps={{
           startAdornment: (
             <InputAdornment position="start">
@@ -17,6 +18,7 @@ const index = () => {
           ),
         }}
         variant="standard"
+    onChange={(event)=>handleChange(event)}
       />
   )
 }
