@@ -1,87 +1,32 @@
 {
   "location": [
     {
-      "id": 1,
-      "name": "ABC",
-      "address": "Lorem ipsum ",
-      "time_open": "07:50",
-      "time_close": "17:50"
+      "name": "Pubinno Arge TEST",
+      "address": "Pubinno Arge TEST Address",
+      "time_open": "16:14",
+      "time_close": "17:15",
+      "id": 1
     },
     {
-      "id": 2,
-      "name": "defg",
-      "address": "Lorem ipsum asdgf asdg",
-      "time_open": "04:50",
-      "time_close": "15:50"
+      "name": "Pubinno New Office",
+      "address": "Istanbul Turkey new office addressssssssssssssssssssssssssssssssssssssssssss ",
+      "time_open": "16:14",
+      "time_close": "14:14",
+      "id": 2
     },
     {
-      "id": 3,
-      "name": "AcczvBC",
-      "address": "Loremxczv ipsum ",
-      "time_open": "07:50",
-      "time_close": "17:50"
+      "name": "New Bar Location Name",
+      "address": "Bar address",
+      "time_open": "14:14",
+      "time_close": "16:12",
+      "id": 3
     },
     {
-      "name": "AcczmvBC",
-      "address": "Loremxczvn ipsum ",
-      "time_open": "07:50",
-      "time_close": "17:50",
+      "name": "Pub Giris - Sol",
+      "address": "Adres Pub Giris Sol",
+      "time_open": "15:25",
+      "time_close": "15:25",
       "id": 4
-    },
-    {
-      "name": "asdasdfasddf",
-      "address": "ssdfasd",
-      "id": 5
-    },
-    {
-      "name": "asdfasdfasdf",
-      "address": "sdafasdfasdf",
-      "id": 6
-    },
-    {
-      "name": "adsfsadfsdaf",
-      "address": "asadfsdf",
-      "id": 7
-    },
-    {
-      "name": "12324",
-      "address": "32432",
-      "id": 8
-    },
-    {
-      "name": "13243124",
-      "address": "12341",
-      "time_open": "07:31",
-      "time_close": "09:30",
-      "id": 9
-    },
-    {
-      "name": "wer32",
-      "address": "541543",
-      "time_open": "03:30",
-      "time_close": "09:30",
-      "id": 10
-    },
-    {
-      "name": "2432532",
-      "address": "24354325",
-      "time_open": "11:32",
-      "time_close": "10:34",
-      "id": 11
-    },
-    {
-      "name": "sfdg",
-      "address": "sdfgsdg",
-      "time_open": "11:32",
-      "time_close": "10:34",
-      "id": 12
-    },
-    {
-      "name": "345",
-      "address": "43",
-      "time_open": "11:32",
-      "time_close": "10:34",
-      "id": 13
     }
   ]
 }
